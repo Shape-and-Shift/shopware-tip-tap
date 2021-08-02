@@ -1,0 +1,6 @@
+<div class="sas-menu-bar">
+    <template v-for="(item, index) in items">
+        <div class="divider" v-if="item.type === 'divider'" :key="index" />
+        <sas-menu-item v-else :key="index" v-bind="item" />
+    </template>
+</div>

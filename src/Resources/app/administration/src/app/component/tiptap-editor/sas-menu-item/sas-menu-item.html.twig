@@ -1,0 +1,12 @@
+<div class="sas-menu-item">
+    <button
+        class="menu-item"
+        :class="{ 'is-active': isActive ? isActive(): null }"
+        @click="action"
+        :title="title"
+    >
+        <svg class="remix">
+            <use :xlink:href="icons + `#ri-${icon}`" />
+        </svg>
+    </button>
+</div>

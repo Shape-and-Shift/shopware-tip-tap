@@ -1,0 +1,17 @@
+{
+  "name": "administration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tiptap/starter-kit": "*",
+    "@tiptap/vue-2": "*",
+    "remixicon": "^2.5.0"
+  }
+}
