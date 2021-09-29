@@ -17,6 +17,10 @@ Component.register('sas-tiptap-editor', {
             type: String,
             default: "",
         },
+        options: {
+            type: Array,
+            default: []
+        }
     },
 
     data() {
