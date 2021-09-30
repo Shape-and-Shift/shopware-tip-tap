@@ -1,4 +1,13 @@
 <div class="sas-tiptap-editor" v-if="editor">
-    <sas-menu-bar class="sas-tiptap-editor__header" :editor="editor" :options="options" />
+    <sas-menu-bar
+            class="sas-tiptap-editor__header"
+            :editor="editor"
+            :options="options"
+            @media-open="onMediaOpen"/>
     <editor-content class="sas-tiptap-editor__content" :editor="editor" />
+
+    <sw-media-modal-v2
+            v-if="showMediaComponent"
+            @modal-close="showMediaComponent = false"
+            @media-modal-selection-change="onAddMedia"/>
 </div>

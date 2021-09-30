@@ -3,97 +3,6 @@ import './sas-menu-bar.scss';
 
 const { Component } = Shopware;
 
-const options = {
-    'bold': {
-        icon: 'bold',
-        title: 'Bold',
-        actionName: 'toggleBold'
-    },
-    'italic': {
-        icon: 'italic',
-        title: 'Italic',
-        actionName: 'toggleItalic'
-    },
-    'strikethrough': {
-        icon: 'strikethrough',
-        title: 'Strike',
-        actionName: 'toggleStrike'
-    },
-    'code-view': {
-        icon: 'code-view',
-        title: 'Code',
-        actionName: 'toggleCode'
-    },
-    'heading-1': {
-        icon: 'h-1',
-        title: 'Heading 1',
-        actionName: 'toggleHeading',
-        level: 1
-    },
-    'heading-2': {
-        icon: 'h-2',
-        title: 'Heading 2',
-        actionName: 'toggleHeading',
-        level: 2
-    },
-    'paragraph': {
-        icon: 'paragraph',
-        title: 'Paragraph',
-        action: 'setParagraph'
-    },
-    'list-unordered': {
-        icon: 'list-unordered',
-        title: 'Bullet List',
-        action: 'toggleBulletList'
-    },
-    'list-ordered': {
-        icon: 'list-ordered',
-        title: 'Ordered List',
-        action: 'toggleOrderedList'
-    },
-    'list-check-2': {
-        icon: 'list-check-2',
-        title: 'Task List',
-        action: 'toggleTaskList'
-    },
-    'code-box-line': {
-        icon: 'list-check-2',
-        title: 'Code Block',
-        action: 'toggleCodeBlock'
-    },
-    'double-quotes': {
-        icon: 'double-quotes-l',
-        title: 'Blockquote',
-        action: 'toggleBlockquote'
-    },
-    'separator': {
-        icon: 'separator',
-        title: 'Horizontal Rule',
-        action: 'setHorizontalRule'
-    },
-    'text-wrap': {
-        icon: 'text-wrap',
-        title: 'Hard Break',
-        action: 'setHardBreak'
-    },
-    'format-clear': {
-        icon: 'format-clear',
-        title: 'Clear Format',
-        action: 'unsetAllMarks',
-        clearNodes: true
-    },
-    'undo': {
-        icon: 'arrow-go-back-line',
-        title: 'Undo',
-        action: 'undo'
-    },
-    'redo': {
-        icon: 'arrow-go-forward-line',
-        title: 'Redo',
-        action: 'redo'
-    },
-}
-
 Component.register('sas-menu-bar', {
     template,
 
@@ -104,7 +13,6 @@ Component.register('sas-menu-bar', {
         },
         options: {
             type: Array,
-            required: true,
             default: []
         }
     },
@@ -112,14 +20,30 @@ Component.register('sas-menu-bar', {
     computed: {
         toolbar() {
             return this.options.map(option => {
+                // let actions = this.editor.chain().focus();
+                // if (Array.isArray(option.action)) {
+                //     option.action.forEach(item => {
+                //         actions = actions[item](option.level ? { level: option.level } : {});
+                //     })
+                // } else {
+                //     actions = actions[opion.action]();
+                // }
+                if (option.type === 'divider') {
+                    return option;
+                }
+
                 return {
                     icon: option.icon,
                     title: option.title,
-                    action: () => this.editor.chain().focus()[option.action]().run(),
-                    isActive: () => this.editor.isActive(option.key),
+                    action: () => this.editor.chain().focus()[option.action](option.level ? { level: option.level } : {}).run(),
+                    isActive: () => this.editor.isActive(option.key, option.level ? { level: option.level } : {}),
                 }
             });
         }
+    },
+
+    created() {
+        console.log(this.editor, 111);
     },
 
     data() {
@@ -183,12 +107,6 @@ Component.register('sas-menu-bar', {
                     isActive: () => this.editor.isActive('orderedList'),
                 },
                 {
-                    icon: 'list-check-2',
-                    title: 'Task List',
-                    action: () => this.editor.chain().focus().toggleTaskList().run(),
-                    isActive: () => this.editor.isActive('taskList'),
-                },
-                {
                     icon: 'code-box-line',
                     title: 'Code Block',
                     action: () => this.editor.chain().focus().toggleCodeBlock().run(),
@@ -238,6 +156,13 @@ Component.register('sas-menu-bar', {
                     title: 'Redo',
                     action: () => this.editor.chain().focus().redo().run(),
                 },
+                {
+                    type: 'component',
+                    name: 'sw-media-modal-v2',
+                    icon: 'gallery-fill',
+                    title: 'Media Library',
+                    action: () => this.$emit('media-open'),
+                }
             ],
         }
     }

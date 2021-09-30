@@ -1,9 +1,11 @@
 import { Editor, EditorContent } from '@tiptap/vue-2';
 import StarterKit from '@tiptap/starter-kit';
+import Image from '@tiptap/extension-image';
 import template from './sas-tiptap-editor.html.twig';
 import './sas-tiptap-editor.scss';
 
 const { Component } = Shopware;
+const { isEmpty } = Shopware.Utils.types;
 
 Component.register('sas-tiptap-editor', {
     template,
@@ -26,6 +28,7 @@ Component.register('sas-tiptap-editor', {
     data() {
         return {
             editor: null,
+            showMediaComponent: false,
         };
     },
 
@@ -47,7 +50,10 @@ Component.register('sas-tiptap-editor', {
 
     mounted() {
         this.editor = new Editor({
-            extensions: [StarterKit],
+            extensions: [
+                StarterKit,
+                Image
+            ],
             content: this.value,
             onUpdate: () => {
                 // HTML
@@ -62,4 +68,22 @@ Component.register('sas-tiptap-editor', {
     beforeDestroy() {
         this.editor.destroy();
     },
+
+    methods: {
+        onMediaOpen() {
+            this.showMediaComponent = true;
+        },
+
+        onAddMedia(media) {
+            if (isEmpty(media)) {
+                return;
+            }
+
+            media.forEach((item) =>  {
+                setTimeout(() => {
+                    this.editor.chain().focus().setImage({ src: item.url }).run();
+                }, 10);
+            });
+        }
+    }
 });
