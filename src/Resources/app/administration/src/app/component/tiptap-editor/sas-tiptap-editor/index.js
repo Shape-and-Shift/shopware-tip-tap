@@ -10,6 +10,8 @@ const { isEmpty } = Shopware.Utils.types;
 Component.register('sas-tiptap-editor', {
     template,
 
+    inject: ['actionService'],
+
     components: {
         EditorContent,
     },
@@ -48,21 +50,27 @@ Component.register('sas-tiptap-editor', {
         },
     },
 
-    mounted() {
-        this.editor = new Editor({
-            extensions: [
-                StarterKit,
-                Image
-            ],
-            content: this.value,
-            onUpdate: () => {
-                // HTML
-                this.$emit("input", this.editor.getHTML());
-
-                // JSON
-                // this.$emit('input', this.editor.getJSON())
+    created() {
+        this.editor = this.actionService.registerEditor(
+          ['StarterKit', 'Image'],
+          this.value,
+          () => {
+            // HTML
+            this.$emit("input", this.editor.getHTML());
             },
-        });
+        );
+
+        // this.editor = new Editor({
+        //     extensions: [
+        //         StarterKit,
+        //         Image
+        //     ],
+        //     content: this.value,
+        //     onUpdate: () => {
+        //         // HTML
+        //         this.$emit("input", this.editor.getHTML());
+        //     },
+        // });
     },
 
     beforeDestroy() {

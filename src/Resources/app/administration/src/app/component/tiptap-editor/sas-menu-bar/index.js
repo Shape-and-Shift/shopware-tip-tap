@@ -6,6 +6,8 @@ const { Component } = Shopware;
 Component.register('sas-menu-bar', {
     template,
 
+    inject: ['actionService'],
+
     props: {
         editor: {
             type: Object,
@@ -17,7 +19,15 @@ Component.register('sas-menu-bar', {
         }
     },
 
+    created() {
+        console.log(this.actionService.generateOptions(this.options), 3333);
+    },
+
     computed: {
+        test() {
+            return this.actionService.generateOptions(this.options);
+        },
+
         toolbar() {
             return this.options.map(option => {
                 // let actions = this.editor.chain().focus();
@@ -40,10 +50,6 @@ Component.register('sas-menu-bar', {
                 }
             });
         }
-    },
-
-    created() {
-        console.log(this.editor, 111);
     },
 
     data() {
