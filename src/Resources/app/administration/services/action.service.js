@@ -36,7 +36,18 @@ export default class ActionService {
   generateOptions(config) {
     const options = [];
     config.forEach(cf => {
-      options.push(new tiptapOptions[cf.name](cf.icon, cf.title, this.editor));
+      if (cf.type !== 'divider') {
+        if (cf.type === 'sw-media') {
+          cf.config = {
+            ...cf.config,
+            action: () => this.$emit('media-open')
+          };
+        }
+
+        options.push(new tiptapOptions[cf.name](cf.icon, cf.title, this.editor, cf.config));
+      } else {
+        options.push({...cf});
+      }
     });
 
     return options;

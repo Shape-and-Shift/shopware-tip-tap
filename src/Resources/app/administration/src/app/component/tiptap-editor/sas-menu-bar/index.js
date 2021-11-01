@@ -19,36 +19,9 @@ Component.register('sas-menu-bar', {
         }
     },
 
-    created() {
-        console.log(this.actionService.generateOptions(this.options), 3333);
-    },
-
     computed: {
-        test() {
-            return this.actionService.generateOptions(this.options);
-        },
-
         toolbar() {
-            return this.options.map(option => {
-                // let actions = this.editor.chain().focus();
-                // if (Array.isArray(option.action)) {
-                //     option.action.forEach(item => {
-                //         actions = actions[item](option.level ? { level: option.level } : {});
-                //     })
-                // } else {
-                //     actions = actions[opion.action]();
-                // }
-                if (option.type === 'divider') {
-                    return option;
-                }
-
-                return {
-                    icon: option.icon,
-                    title: option.title,
-                    action: () => this.editor.chain().focus()[option.action](option.level ? { level: option.level } : {}).run(),
-                    isActive: () => this.editor.isActive(option.key, option.level ? { level: option.level } : {}),
-                }
-            });
+            return this.actionService.generateOptions.call(this, this.options);
         }
     },
 
