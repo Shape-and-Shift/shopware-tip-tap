@@ -2,6 +2,11 @@ import { EditorContent } from '@tiptap/vue-2';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Placeholder from '@tiptap/extension-placeholder';
+import Underline from '@tiptap/extension-underline';
+import BulletList from '@tiptap/extension-bullet-list';
+import OrderedList from '@tiptap/extension-ordered-list';
+import ListItem from '@tiptap/extension-list-item';
+
 import template from './sas-tiptap-editor.html.twig';
 import './sas-tiptap-editor.scss';
 
@@ -64,6 +69,10 @@ Component.register('sas-tiptap-editor', {
           [
               StarterKit,
               Image,
+              Underline,
+              ListItem,
+              BulletList,
+              OrderedList,
               Placeholder.configure({
                   placeholder: this.placeholder,
               })
