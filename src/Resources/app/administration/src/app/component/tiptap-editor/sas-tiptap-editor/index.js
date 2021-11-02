@@ -1,6 +1,7 @@
-import { Editor, EditorContent } from '@tiptap/vue-2';
+import { EditorContent } from '@tiptap/vue-2';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
+import Placeholder from '@tiptap/extension-placeholder';
 import template from './sas-tiptap-editor.html.twig';
 import './sas-tiptap-editor.scss';
 
@@ -24,6 +25,14 @@ Component.register('sas-tiptap-editor', {
         options: {
             type: Array,
             default: []
+        },
+        label: {
+            type: String,
+            default: ''
+        },
+        placeholder: {
+            type: String,
+            default: ''
         }
     },
 
@@ -52,25 +61,19 @@ Component.register('sas-tiptap-editor', {
 
     created() {
         this.editor = this.actionService.registerEditor(
-          ['StarterKit', 'Image'],
+          [
+              StarterKit,
+              Image,
+              Placeholder.configure({
+                  placeholder: this.placeholder,
+              })
+          ],
           this.value,
           () => {
             // HTML
             this.$emit("input", this.editor.getHTML());
             },
         );
-
-        // this.editor = new Editor({
-        //     extensions: [
-        //         StarterKit,
-        //         Image
-        //     ],
-        //     content: this.value,
-        //     onUpdate: () => {
-        //         // HTML
-        //         this.$emit("input", this.editor.getHTML());
-        //     },
-        // });
     },
 
     beforeDestroy() {

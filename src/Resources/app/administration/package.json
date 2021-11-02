@@ -11,8 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "@tiptap/extension-image": "*",
+    "@tiptap/extension-placeholder": "*",
     "@tiptap/starter-kit": "*",
-    "@tiptap/vue-2": "*",
+    "@tiptap/vue-2": "^2.0.0-beta.62",
     "remixicon": "^2.5.0"
   }
 }

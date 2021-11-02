@@ -1,14 +1,23 @@
-<div class="sas-tiptap-editor" v-if="editor">
-    <sas-menu-bar
+<sw-container class="sas-tiptap-editor__container">
+    <div
+        v-if="label.length"
+        class="sas-tiptap-editor__label"
+    >
+        {{ label }}
+    </div>
+
+    <div class="sas-tiptap-editor" v-if="editor">
+        <sas-menu-bar
             class="sas-tiptap-editor__header"
             :editor="editor"
             :options="options"
             @media-open="onMediaOpen"/>
 
-    <editor-content class="sas-tiptap-editor__content" :editor="editor" />
+        <editor-content class="sas-tiptap-editor__content" :editor="editor" />
 
-    <sw-media-modal-v2
+        <sw-media-modal-v2
             v-if="showMediaComponent"
             @modal-close="showMediaComponent = false"
             @media-modal-selection-change="onAddMedia"/>
-</div>
+    </div>
+</sw-container>

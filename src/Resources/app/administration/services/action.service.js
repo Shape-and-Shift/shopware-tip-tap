@@ -1,5 +1,4 @@
 import { Editor } from '@tiptap/vue-2';
-import * as extensionList from '../extensions';
 import * as tiptapOptions from '../options';
 
 export default class ActionService {
@@ -13,17 +12,9 @@ export default class ActionService {
 
   registerEditor(extensions = [], content, callback) {
     if (!this.editor) {
-      const list = [];
-
-      extensions.forEach(extension => {
-        if (extensionList[extension]) {
-          list.push(extensionList[extension]);
-        }
-      });
-
       this.editor = new Editor({
         extensions: [
-          ...list
+          ...extensions
         ],
         content,
         onUpdate: callback
