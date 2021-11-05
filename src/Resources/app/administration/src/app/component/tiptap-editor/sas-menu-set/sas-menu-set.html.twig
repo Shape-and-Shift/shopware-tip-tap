@@ -1,0 +1,17 @@
+{% block sas_menu_bar %}
+    <div class="sas-menu-set" v-clickoutside="onMenuHide">
+        <div class="sas-menu-item sas-menu-set-toggle">
+            <button class="menu-item" @click="onMenuToggle">
+                <svg class="remix">
+                    <use :xlink:href="icons + `#ri-${icon}`" />
+                </svg>
+            </button>
+        </div>
+
+        <div v-if="visible" class="sw-text-editor-toolbar-button__children">
+            <template v-for="(item, index) in toolbar">
+                <sas-menu-item :key="index" v-bind="item" />
+            </template>
+        </div>
+    </div>
+{% endblock %}

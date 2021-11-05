@@ -9,7 +9,8 @@ import Color from './Color';
 import Underline from './Underline';
 import OrderedList from './OrderedList';
 import BulletList from './BulletList';
+import TextAlign from './TextAlign';
 
 export {
-  Bold, Italic, Highlight, Code, Strike, Heading, SwMedia, Color, Underline, OrderedList, BulletList
+  Bold, Italic, Highlight, Code, Strike, Heading, SwMedia, Color, Underline, OrderedList, BulletList, TextAlign
 }

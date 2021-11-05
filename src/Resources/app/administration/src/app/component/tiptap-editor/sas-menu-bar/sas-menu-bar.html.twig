@@ -1,6 +1,9 @@
-<div class="sas-menu-bar">
-    <template v-for="(item, index) in toolbar">
-        <div class="divider" v-if="item.type === 'divider'" :key="index" />
-        <sas-menu-item v-else :key="index" v-bind="item" />
-    </template>
-</div>
+{% block sas_menu_bar %}
+    <div class="sas-menu-bar">
+        <template v-for="(item, index) in toolbar">
+            <div class="divider" v-if="item.type === 'divider'" :key="index" />
+            <sas-menu-set v-if="item.type === 'set'" :icon="item.icon" :options="item.children" />
+            <sas-menu-item v-if="!item.type" :key="index" v-bind="item" />
+        </template>
+    </div>
+{% endblock %}
