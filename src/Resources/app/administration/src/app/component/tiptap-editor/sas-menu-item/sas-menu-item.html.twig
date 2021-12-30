@@ -5,8 +5,9 @@
         @click="action"
         :title="title"
     >
+
         <svg class="remix">
-            <use :xlink:href="icons + `#ri-${icon}`" />
+            <use :xlink:href="`/sastiptapeditor/static/img/remixicon.symbol.svg#ri-${icon}` | asset" />
         </svg>
     </button>
 </div>

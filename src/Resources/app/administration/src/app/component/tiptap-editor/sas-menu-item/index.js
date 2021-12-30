@@ -1,6 +1,5 @@
 import template from './sas-menu-item.html.twig';
 import './sas-menu-item.scss';
-import remixicon from 'remixicon/fonts/remixicon.symbol.svg';
 
 const { Component } = Shopware;
 
@@ -28,10 +27,4 @@ Component.register('sas-menu-item', {
             default: null,
         },
     },
-
-    data() {
-        return {
-            icons: remixicon
-        }
-    }
 });
