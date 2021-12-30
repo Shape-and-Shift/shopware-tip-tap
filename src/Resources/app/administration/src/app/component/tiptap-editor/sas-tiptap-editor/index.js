@@ -6,6 +6,7 @@ import Underline from '@tiptap/extension-underline';
 import BulletList from '@tiptap/extension-bullet-list';
 import OrderedList from '@tiptap/extension-ordered-list';
 import ListItem from '@tiptap/extension-list-item';
+import Heading from '@tiptap/extension-heading';
 
 import template from './sas-tiptap-editor.html.twig';
 import './sas-tiptap-editor.scss';
@@ -75,7 +76,7 @@ Component.register('sas-tiptap-editor', {
               OrderedList,
               Placeholder.configure({
                   placeholder: this.placeholder,
-              })
+              }),
           ],
           this.value,
           () => {
