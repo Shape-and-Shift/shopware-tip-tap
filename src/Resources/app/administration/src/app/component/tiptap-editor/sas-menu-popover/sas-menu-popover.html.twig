@@ -1,0 +1,50 @@
+{% block sas_menu_bar %}
+    <div class="sas-menu-popover" v-clickoutside="onMenuHide">
+        <div class="sas-menu-item sas-menu-set-toggle">
+            <button class="menu-item" @click="onMenuToggle">
+                <svg class="remix">
+                    <use :xlink:href="icons + `#ri-${icon}`" />
+                </svg>
+            </button>
+        </div>
+
+        <div v-if="visible" class="sw-text-editor-toolbar-button__children sw-text-editor-toolbar-button__link-menu">
+            Link to
+            <sw-field
+                type="text"
+                :placeholder="$tc('sw-text-editor-toolbar.link.placeholder')"
+            />
+
+            <sw-switch-field
+                    class="sw-text-editor-toolbar-button__link-menu-switch sw-text-editor-toolbar-button__link-menu-new-tab"
+                    :label="$tc('sw-text-editor-toolbar.link.openInNewTab')"
+            />
+            <sw-switch-field
+                    class="sw-text-editor-toolbar-button__link-menu-switch sw-text-editor-toolbar-button__link-menu-display-button"
+                    :label="$tc('sw-text-editor-toolbar.link.displayAsButton')"
+            />
+            <sw-field
+                    :options="['primary']"
+                    type="select"
+                    :label="$tc('sw-text-editor-toolbar.link.buttonVariant')"
+            />
+
+            <div class="sw-text-editor-toolbar-button__link-menu-buttons">
+                <sw-button
+                        size="small"
+                        class="sw-text-editor-toolbar-button__link-menu-buttons-button-remove"
+                >
+                    {{ $tc('global.default.remove') }}
+                </sw-button>
+
+                <sw-button
+                        size="small"
+                        variant="primary"
+                        class="sw-text-editor-toolbar-button__link-menu-buttons-button-insert"
+                >
+                    {{ $tc('global.default.add') }}
+                </sw-button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

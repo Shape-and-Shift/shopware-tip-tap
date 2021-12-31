@@ -10,7 +10,10 @@ import Underline from './Underline';
 import OrderedList from './OrderedList';
 import BulletList from './BulletList';
 import TextAlign from './TextAlign';
+import Undo from './Undo';
+import Redo from './Redo';
+import Html from './Html';
 
 export {
-  Bold, Italic, Highlight, Code, Strike, Heading, SwMedia, Color, Underline, OrderedList, BulletList, TextAlign
+  Bold, Italic, Highlight, Code, Strike, Heading, SwMedia, Color, Underline, OrderedList, BulletList, TextAlign, Undo, Redo, Html
 }

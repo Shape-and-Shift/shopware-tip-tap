@@ -1,13 +1,13 @@
 <div class="sas-menu-item">
     <button
         class="menu-item"
-        :class="{ 'is-active': isActive ? isActive(): null }"
-        @click="action"
-        :title="title"
+        :class="{ 'is-active': item.isActive ? item.isActive(): null }"
+        @click="item.action || null"
+        :title="item.title"
     >
 
         <svg class="remix">
-            <use :xlink:href="`/sastiptapeditor/static/img/remixicon.symbol.svg#ri-${icon}` | asset" />
+            <use :xlink:href="`/sastiptapeditor/static/img/remixicon.symbol.svg#ri-${item.icon}` | asset" />
         </svg>
     </button>
 </div>

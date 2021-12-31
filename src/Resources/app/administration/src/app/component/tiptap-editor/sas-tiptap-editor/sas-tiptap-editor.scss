@@ -88,6 +88,12 @@
         margin-top: 0.75em;
     }
 
+    img {
+        &.ProseMirror-selectednode {
+            outline: 3px solid #68CEF8;
+        }
+    }
+
     p:first-child::before {
         content: attr(data-placeholder);
         float: left;

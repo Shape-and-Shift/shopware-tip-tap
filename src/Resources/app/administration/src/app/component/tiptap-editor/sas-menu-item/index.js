@@ -6,25 +6,9 @@ const { Component } = Shopware;
 Component.register('sas-menu-item', {
     template,
 
-    props: {
-        icon: {
-            type: String,
-            required: true,
-        },
-
-        title: {
-            type: String,
-            required: true,
-        },
-
-        action: {
-            type: Function,
-            required: true,
-        },
-
-        isActive: {
-            type: Function,
-            default: null,
-        },
+    computed: {
+        item() {
+            return { ...this.$attrs };
+        }
     },
 });

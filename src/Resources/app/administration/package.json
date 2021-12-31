@@ -13,6 +13,7 @@
     "@tiptap/extension-bullet-list": "^2.0.0-beta.26",
     "@tiptap/extension-heading": "^2.0.0-beta.24",
     "@tiptap/extension-image": "^2.0.0-beta.24",
+    "@tiptap/extension-link": "^2.0.0-beta.33",
     "@tiptap/extension-list-item": "^2.0.0-beta.20",
     "@tiptap/extension-ordered-list": "^2.0.0-beta.27",
     "@tiptap/extension-placeholder": "^2.0.0-beta.45",
@@ -21,7 +22,7 @@
     "@tiptap/starter-kit": "^2.0.0-beta.164",
     "@tiptap/vue-2": "^2.0.0-beta.73",
     "remixicon": "^2.5.0",
-    "vue-click-outside": "^1.1.0",
-    "vue": "2.6.0"
+    "vue": "2.6.0",
+    "vue-click-outside": "^1.1.0"
   }
 }

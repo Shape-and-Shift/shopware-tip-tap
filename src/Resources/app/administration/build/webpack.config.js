@@ -4,10 +4,13 @@ module.exports = () => {
         resolve: {
             alias: {
                 '@tiptap': resolve(
-                    join(__dirname, '..', 'node_modules', '@tiptap')
+                    join(__dirname, '..', 'node_modules', '@tiptap'),
                 ),
                 'remixicon': resolve(
                     join(__dirname, '..', 'node_modules', 'remixicon')
+                ),
+                'extensions': resolve(
+                    join(__dirname, '..', 'extensions')
                 ),
             }
         }

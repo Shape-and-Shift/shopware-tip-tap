@@ -2,6 +2,7 @@ import './app/component/tiptap-editor/sas-tiptap-editor';
 import './app/component/tiptap-editor/sas-menu-bar';
 import './app/component/tiptap-editor/sas-menu-item';
 import './app/component/tiptap-editor/sas-menu-set';
+import './app/component/tiptap-editor/sas-menu-popover';
 
 import '../init/action-service.init';
 
