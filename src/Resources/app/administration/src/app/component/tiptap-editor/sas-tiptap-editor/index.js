@@ -6,9 +6,8 @@ import Underline from '@tiptap/extension-underline';
 import BulletList from '@tiptap/extension-bullet-list';
 import OrderedList from '@tiptap/extension-ordered-list';
 import ListItem from '@tiptap/extension-list-item';
-import TextAlign from '@tiptap/extension-text-align';
 import Alignment from 'extensions/Alignment';
-import CustomImage from 'extensions/CustomImage';
+import CustomLink from 'extensions/CustomLink';
 
 import template from './sas-tiptap-editor.html.twig';
 import './sas-tiptap-editor.scss';
@@ -76,6 +75,10 @@ Component.register('sas-tiptap-editor', {
               ListItem,
               BulletList,
               OrderedList,
+              CustomLink.configure({
+                  openOnClick: false,
+                  linkOnPaste: false,
+              }),
               Alignment.configure({
                   types: ['heading', 'paragraph', 'image'],
                   alignments: ['left', 'center', 'right', 'justify'],

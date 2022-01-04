@@ -24,6 +24,7 @@ Component.register('sas-menu-popover', {
     methods: {
         onMenuToggle() {
             this.visible = !this.visible;
+            this.$emit('menu-toggle', this.visible);
         },
 
         onMenuHide() {

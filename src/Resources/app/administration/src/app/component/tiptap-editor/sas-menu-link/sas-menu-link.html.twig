@@ -1,0 +1,47 @@
+<sas-menu-popover :icon="icon" class="sas-menu-link" @menu-toggle="onMenuToggle">
+    <template>
+        Link to
+        <sw-field
+                v-model="link"
+                type="text"
+                :placeholder="$tc('sw-text-editor-toolbar.link.placeholder')"
+        />
+
+        <sw-switch-field
+                v-model="newTab"
+                class="sas-menu-link__link-menu-switch sas-menu-link__link-menu-new-tab"
+                :label="$tc('sw-text-editor-toolbar.link.openInNewTab')"
+        />
+        <sw-switch-field
+                v-model="displayAsButton"
+                class="sas-menu-link__link-menu-switch"
+                :label="$tc('sw-text-editor-toolbar.link.displayAsButton')"
+        />
+        <sw-field
+                v-if="displayAsButton"
+                :options="buttonVariantList"
+                v-model="selectedVariant"
+                type="select"
+                :label="$tc('sw-text-editor-toolbar.link.buttonVariant')"
+        />
+
+        <div class="sas-menu-link__link-menu-buttons">
+            <sw-button
+                    size="small"
+                    class="sas-menu-link__link-menu-buttons-button-remove"
+                    @click="onRemoveLink"
+            >
+                {{ $tc('global.default.remove') }}
+            </sw-button>
+
+            <sw-button
+                    size="small"
+                    variant="primary"
+                    class="sas-menu-link__link-menu-buttons-button-insert"
+                    @click="onAddLink"
+            >
+                {{ $tc('global.default.add') }}
+            </sw-button>
+        </div>
+    </template>
+</sas-menu-popover>

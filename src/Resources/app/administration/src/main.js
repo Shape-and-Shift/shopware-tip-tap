@@ -3,6 +3,7 @@ import './app/component/tiptap-editor/sas-menu-bar';
 import './app/component/tiptap-editor/sas-menu-item';
 import './app/component/tiptap-editor/sas-menu-set';
 import './app/component/tiptap-editor/sas-menu-popover';
+import './app/component/tiptap-editor/sas-menu-link';
 
 import '../init/action-service.init';
 
