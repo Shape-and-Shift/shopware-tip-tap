@@ -8,7 +8,7 @@
             </button>
         </div>
 
-        <div v-if="visible" class="sw-text-editor-toolbar-button__children">
+        <div v-if="visible" class="sas-menu-popover__children">
             <template v-for="(item, index) in toolbar">
                 <sas-menu-item :key="index" v-bind="item" />
             </template>

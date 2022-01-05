@@ -27,7 +27,7 @@ export default class ActionService {
   generateOptions(config) {
     const options = [];
     config.forEach(cf => {
-      if (cf.type !== 'divider' && cf.type !== 'set' && cf.type !== 'link') {
+      if (cf.type !== 'divider' && cf.type !== 'set' && cf.type !== 'link' && cf.type !== 'Color') {
         if (cf.type === 'sw-media') {
           cf.config = {
             ...cf.config,

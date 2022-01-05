@@ -4,6 +4,12 @@
             <div class="divider" v-if="item.type === 'divider'" :key="index" />
             <sas-menu-set v-if="item.type === 'set'" :editor="editor" :icon="item.icon" :options="item.children" />
             <sas-menu-link v-if="item.type === 'link'" :editor="editor" v-bind="item" />
+            <input
+                v-if="item.type === 'Color'"
+                type="color"
+                @input="editor.chain().focus().setColor($event.target.value).run()"
+                :value="editor.getAttributes('textStyle').color"
+            >
             <sas-menu-item v-if="!item.type" :key="index" v-bind="item" />
         </template>
     </div>

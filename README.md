@@ -53,6 +53,10 @@ editorOptions: [
     ]
   },
   {
+    type: 'Color',
+    icon: 'font-color',
+  },
+  {
     name: 'Bold',
     title: 'Bold',
     icon: 'bold',
@@ -126,6 +130,21 @@ editorOptions: [
     name: 'SwMedia',
     title: 'Media library',
     icon: 'gallery-line',
+  },
+  {
+    name: 'Undo',
+    title: 'Undo',
+    icon: 'arrow-go-back-line',
+  },
+  {
+    name: 'Redo',
+    title: 'Redo',
+    icon: 'arrow-go-forward-line',
+  },
+  {
+    type: 'link',
+    title: 'Link',
+    icon: 'link',
   }
 ]
 ```

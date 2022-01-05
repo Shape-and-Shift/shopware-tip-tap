@@ -6,6 +6,8 @@ import Underline from '@tiptap/extension-underline';
 import BulletList from '@tiptap/extension-bullet-list';
 import OrderedList from '@tiptap/extension-ordered-list';
 import ListItem from '@tiptap/extension-list-item';
+import TextStyle from '@tiptap/extension-text-style';
+import { Color } from '@tiptap/extension-color';
 import Alignment from 'extensions/Alignment';
 import CustomLink from 'extensions/CustomLink';
 
@@ -75,6 +77,8 @@ Component.register('sas-tiptap-editor', {
               ListItem,
               BulletList,
               OrderedList,
+              TextStyle,
+              Color,
               CustomLink.configure({
                   openOnClick: false,
                   linkOnPaste: false,

@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@tiptap/extension-bullet-list": "^2.0.0-beta.26",
+    "@tiptap/extension-color": "^2.0.0-beta.9",
     "@tiptap/extension-heading": "^2.0.0-beta.24",
     "@tiptap/extension-image": "^2.0.0-beta.24",
     "@tiptap/extension-link": "^2.0.0-beta.33",
@@ -18,6 +19,7 @@
     "@tiptap/extension-ordered-list": "^2.0.0-beta.27",
     "@tiptap/extension-placeholder": "^2.0.0-beta.45",
     "@tiptap/extension-text-align": "^2.0.0-beta.29",
+    "@tiptap/extension-text-style": "^2.0.0-beta.23",
     "@tiptap/extension-underline": "^2.0.0-beta.22",
     "@tiptap/starter-kit": "^2.0.0-beta.164",
     "@tiptap/vue-2": "^2.0.0-beta.73",
