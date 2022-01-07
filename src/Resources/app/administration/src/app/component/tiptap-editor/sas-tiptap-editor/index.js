@@ -60,7 +60,7 @@ Component.register('sas-tiptap-editor', {
         value(value) {
             if (!value) return
 
-            const isSame = this.output === 'html' ? this.editor.getHTML() === value : this.editor.getJSON().toString() === value.toString()
+            const isSame = this.output === 'html' ? this.editor.getHTML() === value : JSON.stringify(this.editor.getJSON()) === value.toString()
 
             if (isSame) return
 
@@ -91,8 +91,10 @@ Component.register('sas-tiptap-editor', {
                     placeholder: this.placeholder,
                 }),
             ],
-            this.value,
-            () => this.$emit('input', this.output === 'json' ? this.editor.getJSON().toString() : this.editor.getHTML()),
+            JSON.parse(this.value),
+            () => {
+                this.$emit('input', this.output === 'json' ? JSON.stringify(this.editor.getJSON()) : this.editor.getHTML())
+            },
         )
     },
 
@@ -114,7 +116,7 @@ Component.register('sas-tiptap-editor', {
         }
     },
 
-    // beforeDestroy() {
-    //     this.editor.destroy()
-    // },
+    destroyed() {
+        this.editor.destroy()
+    },
 })

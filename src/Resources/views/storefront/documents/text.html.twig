@@ -1,0 +1,42 @@
+{% set marks = document.marks %}
+
+{% set style = '' %}
+
+{% set isLinkTag = false %}
+{% set linkAttrs = null %}
+{% for mark in marks %}
+    {% if mark.type == 'bold' %}
+        {% set style = style ~ 'font-weight: bold;' %}
+    {% elseif mark.type == 'italic' %}
+        {% set style = style ~ 'font-style: italic;' %}
+    {% elseif mark.type == 'underline' %}
+        {% set style = style ~ 'text-decoration: underline;' %}
+    {% elseif mark.type == 'strikethrough' %}
+        {% set style = style ~ 'text-decoration: line-through;' %}
+    {% elseif mark.type == 'textStyle' %}
+        {% set color = mark.attrs.color %}
+        {% if color %}
+            {% set style = style ~ 'color: ' ~ color ~ ';' %}
+        {% endif %}
+    {% elseif mark.type == 'link' %}
+        {% set isLinkTag = true %}
+        {% set linkAttrs = mark.attrs %}
+    {% endif %}
+
+    {% if textAlign %}
+        {% set style = style ~ 'text-align: ' ~ textAlign ~ ';' %}
+    {% endif %}
+{% endfor %}
+
+<{{ tag }} style="{{ style }}">
+{% if isLinkTag %}
+    {% sw_include '@Storefront/storefront/documents/link.html.twig' with {
+        href: linkAttrs.href,
+        target: linkAttrs.target,
+        classes: linkAttrs.class,
+        text: document.text,
+    } %}
+{% else %}
+    {{ document.text }}
+{% endif %}
+</{{ tag }}>

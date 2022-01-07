@@ -11,15 +11,13 @@ export default class ActionService {
   }
 
   registerEditor(extensions = [], content, callback) {
-    if (!this.editor) {
-      this.editor = new Editor({
-        extensions: [
-          ...extensions
-        ],
-        content,
-        onUpdate: callback
-      });
-    }
+    this.editor = new Editor({
+      extensions: [
+        ...extensions
+      ],
+      content,
+      onUpdate: callback
+    });
 
     return this.editor;
   }

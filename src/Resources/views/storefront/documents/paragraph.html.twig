@@ -1,0 +1,8 @@
+{% set attrs = document.attrs %}
+{% for doc in document.content %}
+    {% sw_include '@Storefront/storefront/documents/text.html.twig' with {
+        document: doc,
+        tag: 'p',
+        textAlign: attrs.textAlign
+    } %}
+{% endfor %}

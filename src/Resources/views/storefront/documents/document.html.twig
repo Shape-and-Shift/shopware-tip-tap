@@ -1,0 +1,17 @@
+{% if document.content|length > 0 %}
+    {% for doc in document.content  %}
+        {% set attributes = doc.attrs %}
+
+        {% if doc.type == 'heading' %}
+            {% sw_include '@Storefront/storefront/documents/heading.html.twig' with {
+                document: doc
+            } %}
+        {% endif %}
+
+        {% if doc.type == 'paragraph' %}
+            {% sw_include '@Storefront/storefront/documents/paragraph.html.twig' with {
+                document: doc
+            } %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
