@@ -1,7 +1,9 @@
-<a
-    {% if href %}href="{{ href }}"{% endif %}
-    {% if href %}class="{{ classes }}"{% endif %}
-    {% if target %}target="_blank"{% endif %}
->
-    {{ text }}
-</a>
+{% block sas_tiptap_link %}
+    <a
+        {% if href %}href="{{ href }}"{% endif %}
+        {% if href %}class="{{ classes }}"{% endif %}
+        {% if target %}target="_blank"{% endif %}
+    >
+        {{ text }}
+    </a>
+{% endblock %}

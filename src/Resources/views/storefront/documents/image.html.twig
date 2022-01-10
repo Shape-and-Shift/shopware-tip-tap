@@ -1,0 +1,10 @@
+{% block sas_tiptap_image %}
+    {% set classes = 'text-left' %}
+    {% if document.textAlign %}
+        {% set classes = 'text-' ~ document.textAlign %}
+    {% endif %}
+
+    <div class="{{ classes }}">
+        <img src="{{ document.src }}" alt="" />
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% block sas_tiptap_list_item %}
+    {% if document.content|length > 0 %}
+        {% for doc in document.content %}
+            {% set attrs = document.attrs %}
+            {% for doc in document.content %}
+                {% sw_include '@Storefront/storefront/documents/paragraph.html.twig' with {
+                    document: doc,
+                    tag: 'li'
+                } %}
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

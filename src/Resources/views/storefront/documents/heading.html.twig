@@ -1,10 +1,12 @@
-{% set attrs = document.attrs %}
-{% set headingTag = attrs.level ? 'h' ~ attrs.level : 'h1' %}
+{% block sas_tiptap_heading %}
+    {% set attrs = document.attrs %}
+    {% set headingTag = attrs.level ? 'h' ~ attrs.level : 'h1' %}
 
-{% for doc in document.content %}
-    {% sw_include '@Storefront/storefront/documents/text.html.twig' with {
-        document: doc,
-        tag: headingTag,
-        textAlign: attrs.textAlign,
-    } %}
-{% endfor %}
+    {% for doc in document.content %}
+        {% sw_include '@Storefront/storefront/documents/text.html.twig' with {
+            document: doc,
+            tag: headingTag,
+            textAlign: attrs.textAlign,
+        } %}
+    {% endfor %}
+{% endblock %}

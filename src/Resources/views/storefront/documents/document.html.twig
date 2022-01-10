@@ -1,17 +1,39 @@
-{% if document.content|length > 0 %}
-    {% for doc in document.content  %}
-        {% set attributes = doc.attrs %}
+{% block sas_tiptap_document %}
+    {% if document.content|length > 0 %}
+        {% for doc in document.content  %}
+            {% set attributes = doc.attrs %}
 
-        {% if doc.type == 'heading' %}
-            {% sw_include '@Storefront/storefront/documents/heading.html.twig' with {
-                document: doc
-            } %}
-        {% endif %}
+            {% if doc.type == 'heading' %}
+                {% sw_include '@Storefront/storefront/documents/heading.html.twig' with {
+                    document: doc
+                } %}
+            {% endif %}
 
-        {% if doc.type == 'paragraph' %}
-            {% sw_include '@Storefront/storefront/documents/paragraph.html.twig' with {
-                document: doc
-            } %}
-        {% endif %}
-    {% endfor %}
-{% endif %}
+            {% if doc.type == 'paragraph' %}
+                {% sw_include '@Storefront/storefront/documents/paragraph.html.twig' with {
+                    document: doc
+                } %}
+            {% endif %}
+
+            {% if doc.type == 'orderedList' %}
+                {% sw_include '@Storefront/storefront/documents/list.html.twig' with {
+                    document: doc,
+                    tag: 'ol'
+                } %}
+            {% endif %}
+
+            {% if doc.type == 'bulletList' %}
+                {% sw_include '@Storefront/storefront/documents/list.html.twig' with {
+                    document: doc,
+                    tag: 'ul'
+                } %}
+            {% endif %}
+
+            {% if doc.type == 'image' %}
+                {% sw_include '@Storefront/storefront/documents/image.html.twig' with {
+                    document: doc.attrs
+                } %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

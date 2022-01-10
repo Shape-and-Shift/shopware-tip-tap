@@ -1,0 +1,13 @@
+{% block sas_tiptap_list %}
+    <{{ tag }}>
+    {% if document.content|length > 0 %}
+        {% for doc in document.content %}
+            {% if doc.type == 'listItem' %}
+                {% sw_include '@Storefront/storefront/documents/list-item.html.twig' with {
+                    document: doc
+                } %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    </{{ tag }}>
+{% endblock %}
