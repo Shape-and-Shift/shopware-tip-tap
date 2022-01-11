@@ -149,6 +149,8 @@ editorOptions: [
 ]
 ```
 
+Too long? You can set `mode` prop to `full` and all available options will show up.
+
 With `set` as a type, you can create a dropdown menu of many items.
 
 An option must provide `name`, `icon` properties in order to work.

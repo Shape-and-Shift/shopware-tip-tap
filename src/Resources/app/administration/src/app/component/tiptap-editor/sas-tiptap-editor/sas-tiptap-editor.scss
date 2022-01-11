@@ -44,50 +44,6 @@
         -webkit-overflow-scrolling: touch;
     }
 
-    /* Some information about the status */
-    &__status {
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-
-        &::before {
-            content: ' ';
-            flex: 0 0 auto;
-            display: inline-block;
-            width: 0.5rem;
-            height: 0.5rem;
-            background: rgba(#0D0D0D, 0.5);
-            border-radius: 50%;
-            margin-right: 0.5rem;
-        }
-
-        &--connecting::before {
-            background: #616161;
-        }
-
-        &--connected::before {
-            background: #B9F18D;
-        }
-    }
-
-    &__name {
-        button {
-            background: none;
-            border: none;
-            font: inherit;
-            font-size: 12px;
-            font-weight: 600;
-            color: #0D0D0D;
-            border-radius: 0.4rem;
-            padding: 0.25rem 0.5rem;
-
-            &:hover {
-                color: #FFF;
-                background-color: #0D0D0D;
-            }
-        }
-    }
-
     a.btn {
         background: $color-gray-50;
         color: $color-darkgray-200;
@@ -224,28 +180,3 @@
     }
 }
 
-.collaboration-cursor__caret {
-    position: relative;
-    margin-left: -1px;
-    margin-right: -1px;
-    border-left: 1px solid #0D0D0D;
-    border-right: 1px solid #0D0D0D;
-    word-break: normal;
-    pointer-events: none;
-}
-
-/* Render the username above the caret */
-.collaboration-cursor__label {
-    position: absolute;
-    top: -1.4em;
-    left: -1px;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    user-select: none;
-    color: #0D0D0D;
-    padding: 0.1rem 0.3rem;
-    border-radius: 3px 3px 3px 0;
-    white-space: nowrap;
-}

@@ -33,7 +33,7 @@ Component.register('sas-tiptap-editor', {
         },
         options: {
             type: Array,
-            default: []
+            default: () => [],
         },
         label: {
             type: String,
@@ -47,6 +47,142 @@ Component.register('sas-tiptap-editor', {
             type: String,
             default: 'html',
         },
+        mode: {
+            type: String,
+            default: 'basic',
+        },
+    },
+
+    computed: {
+        editorOptions() {
+            return this.mode === 'full' ? [
+                {
+                    type: 'set',
+                    title: 'Heading',
+                    icon: 'heading',
+                    children: [
+                        {
+                            name: 'Heading',
+                            title: 'Heading 1',
+                            icon: 'h-1',
+                            config: {
+                                level: 1,
+                            }
+                        },
+                        {
+                            name: 'Heading',
+                            title: 'Heading 2',
+                            icon: 'h-2',
+                            config: {
+                                level: 2,
+                            }
+                        },
+                        {
+                            name: 'Heading',
+                            title: 'Heading 3',
+                            icon: 'h-3',
+                            config: {
+                                level: 3,
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: 'Color',
+                    icon: 'font-color',
+                },
+                {
+                    name: 'Bold',
+                    title: 'Bold',
+                    icon: 'bold',
+                },
+                {
+                    name: 'Italic',
+                    title: 'Italic',
+                    icon: 'italic',
+                },
+                {
+                    name: 'Underline',
+                    title: 'Underline',
+                    icon: 'underline',
+                },
+                {
+                    name: 'Strike',
+                    title: 'Strikethrough',
+                    icon: 'strikethrough',
+                },
+                {
+                    type: 'set',
+                    title: 'Text Align',
+                    icon: 'align-justify',
+                    children: [
+                        {
+                            name: 'TextAlign',
+                            title: 'Left',
+                            icon: 'align-left',
+                            config: {
+                                textAlign: 'left',
+                            }
+                        },
+                        {
+                            name: 'TextAlign',
+                            title: 'Center',
+                            icon: 'align-center',
+                            config: {
+                                textAlign: 'center',
+                            }
+                        },
+                        {
+                            name: 'TextAlign',
+                            title: 'Right',
+                            icon: 'align-right',
+                            config: {
+                                textAlign: 'right',
+                            }
+                        },
+                        {
+                            name: 'TextAlign',
+                            title: 'Justify',
+                            icon: 'align-justify',
+                            config: {
+                                textAlign: 'justify',
+                            }
+                        },
+                    ]
+                },
+                {
+                    name: 'OrderedList',
+                    title: 'Ordered list',
+                    icon: 'list-ordered',
+                },
+                {
+                    name: 'BulletList',
+                    title: 'Bullet list',
+                    icon: 'list-unordered',
+                },
+                {
+                    type: 'sw-media',
+                    name: 'SwMedia',
+                    title: 'Media library',
+                    icon: 'gallery-line',
+                },
+                {
+                    name: 'Undo',
+                    title: 'Undo',
+                    icon: 'arrow-go-back-line',
+                },
+                {
+                    name: 'Redo',
+                    title: 'Redo',
+                    icon: 'arrow-go-forward-line',
+                },
+                {
+                    type: 'link',
+                    title: 'Link',
+                    icon: 'link',
+                }
+            ] : this.options;
+        }
     },
 
     data() {
@@ -69,36 +205,40 @@ Component.register('sas-tiptap-editor', {
     },
 
     created() {
-        this.editor = this.actionService.registerEditor(
-            [
-                StarterKit,
-                Image,
-                Underline,
-                ListItem,
-                BulletList,
-                OrderedList,
-                TextStyle,
-                Color,
-                CustomLink.configure({
-                    openOnClick: false,
-                    linkOnPaste: false,
-                }),
-                Alignment.configure({
-                    types: ['heading', 'paragraph', 'image'],
-                    alignments: ['left', 'center', 'right', 'justify'],
-                }),
-                Placeholder.configure({
-                    placeholder: this.placeholder,
-                }),
-            ],
-            JSON.parse(this.value),
-            () => {
-                this.$emit('input', this.output === 'json' ? JSON.stringify(this.editor.getJSON()) : this.editor.getHTML())
-            },
-        )
+        this.createdComponent();
     },
 
     methods: {
+        createdComponent() {
+            this.editor = this.actionService.registerEditor(
+                [
+                    StarterKit,
+                    Image,
+                    Underline,
+                    ListItem,
+                    BulletList,
+                    OrderedList,
+                    TextStyle,
+                    Color,
+                    CustomLink.configure({
+                        openOnClick: false,
+                        linkOnPaste: false,
+                    }),
+                    Alignment.configure({
+                        types: ['heading', 'paragraph', 'image'],
+                        alignments: ['left', 'center', 'right', 'justify'],
+                    }),
+                    Placeholder.configure({
+                        placeholder: this.placeholder,
+                    }),
+                ],
+                JSON.parse(this.value),
+                () => {
+                    this.$emit('input', this.output === 'json' ? JSON.stringify(this.editor.getJSON()) : this.editor.getHTML())
+                },
+            )
+        },
+
         onMediaOpen() {
             this.showMediaComponent = true
         },
