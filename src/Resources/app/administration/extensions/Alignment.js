@@ -12,7 +12,9 @@ const Alignment = TextAlign.extend({
         attributes: {
           textAlign: {
             default: this.options.defaultAlignment,
-            parseHTML: element => element.style.textAlign || this.options.defaultAlignment,
+            parseHTML: element => {
+              return element.style.textAlign || this.options.defaultAlignment
+            },
             renderHTML: attributes => {
               if (attributes.textAlign === this.options.defaultAlignment) {
                 return {};
@@ -49,7 +51,9 @@ const Alignment = TextAlign.extend({
           return false;
         }
 
-        return this.options.types.every(type => commands.updateAttributes(type, { textAlign: alignment, type }));
+        return this.options.types.every(type => {
+          return commands.updateAttributes(type, { textAlign: alignment, type })
+        });
       },
       unsetTextAlign: () => ({ commands }) => {
         return this.options.types.every(type => commands.resetAttributes(type, 'textAlign'));

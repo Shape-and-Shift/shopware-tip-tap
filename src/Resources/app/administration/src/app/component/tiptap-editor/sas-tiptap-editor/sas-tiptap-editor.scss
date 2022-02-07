@@ -3,7 +3,7 @@
 .sas-tiptap-editor {
     display: flex;
     flex-direction: column;
-    max-height: 400px;
+    min-height: 400px;
     color: #0D0D0D;
     background-color: #FFF;
     border: 1px solid $color-gray-300;
@@ -146,7 +146,7 @@
 
     img {
         max-width: 100%;
-        height: auto;
+        height: 100%;
     }
 
     hr {

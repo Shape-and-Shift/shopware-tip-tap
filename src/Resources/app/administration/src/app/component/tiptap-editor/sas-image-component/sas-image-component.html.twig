@@ -1,0 +1,5 @@
+<node-view-wrapper class="sas-image-component" :class="align">
+    <vue-draggable-resizable :w="width" :h="height" @resizestop="onResize" :draggable="false" :lock-aspect-ratio="true">
+        <img :src="src" />
+    </vue-draggable-resizable>
+</node-view-wrapper>

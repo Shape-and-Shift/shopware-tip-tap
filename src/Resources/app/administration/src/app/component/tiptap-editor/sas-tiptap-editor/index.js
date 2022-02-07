@@ -1,15 +1,15 @@
-import { EditorContent } from '@tiptap/vue-2'
-import StarterKit from '@tiptap/starter-kit'
-import Image from '@tiptap/extension-image'
-import Placeholder from '@tiptap/extension-placeholder'
-import Underline from '@tiptap/extension-underline'
-import BulletList from '@tiptap/extension-bullet-list'
-import OrderedList from '@tiptap/extension-ordered-list'
-import ListItem from '@tiptap/extension-list-item'
-import TextStyle from '@tiptap/extension-text-style'
-import { Color } from '@tiptap/extension-color'
-import Alignment from 'extensions/Alignment'
-import CustomLink from 'extensions/CustomLink'
+import { EditorContent } from '@tiptap/vue-2';
+import StarterKit from '@tiptap/starter-kit';
+import Placeholder from '@tiptap/extension-placeholder';
+import Underline from '@tiptap/extension-underline';
+import BulletList from '@tiptap/extension-bullet-list';
+import OrderedList from '@tiptap/extension-ordered-list';
+import ListItem from '@tiptap/extension-list-item';
+import TextStyle from '@tiptap/extension-text-style';
+import TextAlign from '@tiptap/extension-text-align';
+import { Color } from '@tiptap/extension-color';
+import CustomLink from 'extensions/CustomLink';
+import CustomImage from 'extensions/CustomImage';
 
 import template from './sas-tiptap-editor.html.twig'
 import './sas-tiptap-editor.scss'
@@ -213,7 +213,7 @@ Component.register('sas-tiptap-editor', {
             this.editor = this.actionService.registerEditor(
                 [
                     StarterKit,
-                    Image,
+                    CustomImage,
                     Underline,
                     ListItem,
                     BulletList,
@@ -224,7 +224,7 @@ Component.register('sas-tiptap-editor', {
                         openOnClick: false,
                         linkOnPaste: false,
                     }),
-                    Alignment.configure({
+                    TextAlign.configure({
                         types: ['heading', 'paragraph', 'image'],
                         alignments: ['left', 'center', 'right', 'justify'],
                     }),
@@ -232,7 +232,7 @@ Component.register('sas-tiptap-editor', {
                         placeholder: this.placeholder,
                     }),
                 ],
-                JSON.parse(this.value),
+                this.output === 'json' ? JSON.parse(this.value) : this.value,
                 () => {
                     this.$emit('input', this.output === 'json' ? JSON.stringify(this.editor.getJSON()) : this.editor.getHTML())
                 },
