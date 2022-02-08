@@ -11,11 +11,11 @@ import { Color } from '@tiptap/extension-color';
 import CustomLink from 'extensions/CustomLink';
 import CustomImage from 'extensions/CustomImage';
 
-import template from './sas-tiptap-editor.html.twig'
-import './sas-tiptap-editor.scss'
+import template from './sas-tiptap-editor.html.twig';
+import './sas-tiptap-editor.scss';
 
-const { Component } = Shopware
-const { isEmpty } = Shopware.Utils.types
+const { Component } = Shopware;
+const { isEmpty } = Shopware.Utils.types;
 
 Component.register('sas-tiptap-editor', {
     template,
@@ -194,13 +194,13 @@ Component.register('sas-tiptap-editor', {
 
     watch: {
         value(value) {
-            if (!value) return
+            if (!value) return;
 
-            const isSame = this.output === 'html' ? this.editor.getHTML() === value : JSON.stringify(this.editor.getJSON()) === value.toString()
+            const isSame = this.output === 'html' ? this.editor.getHTML() === value : JSON.stringify(this.editor.getJSON()) === value.toString();
 
-            if (isSame) return
+            if (isSame) return;
 
-            this.editor.commands.setContent(this.value, false)
+            this.editor.commands.setContent(this.value, false);
         },
     },
 
@@ -240,23 +240,23 @@ Component.register('sas-tiptap-editor', {
         },
 
         onMediaOpen() {
-            this.showMediaComponent = true
+            this.showMediaComponent = true;
         },
 
         onAddMedia(media) {
             if (isEmpty(media)) {
-                return
+                return;
             }
 
             media.forEach((item) => {
                 setTimeout(() => {
-                    this.editor.chain().focus().setImage({ src: item.url }).run()
-                }, 10)
+                    this.editor.chain().focus().setImage({ src: item.url }).run();
+                }, 10);
             })
         }
     },
 
     destroyed() {
-        this.editor.destroy()
+        this.editor.destroy();
     },
 })
